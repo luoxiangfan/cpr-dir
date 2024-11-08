@@ -25,9 +25,9 @@ function isDirectory(path: string) {
  * copy directory recursively like `cp -r` command
  * @param source source directory
  * @param dest destination directory
- * @param limit the max number of open files one time(default 6)
+ * @param limit the max number of open files at a time
  */
-function copyDir(source: string, dest: string, limit: number = 6) {
+function copyDir(source: string, dest: string, limit: number | undefined) {
   const list = readdirSyncRecursive(source);
   const files = list.filter((l) => isFile(nodePath.join(source, l)));
   const dirs = list.filter((l) => isDirectory(nodePath.join(source, l)));
@@ -35,8 +35,11 @@ function copyDir(source: string, dest: string, limit: number = 6) {
     const destPath = nodePath.join(dest, dir);
     if (!fs.existsSync(destPath)) {
       fs.mkdirSync(destPath, { recursive: true });
-      copyDir(nodePath.join(source, dir), destPath, limit);
+      copyDir(nodePath.join(source, dir), destPath, undefined);
     }
+  }
+  if (typeof limit !== 'number' || !files.length) {
+    return;
   }
   async.eachLimit(files, limit, (file, next) => {
     const srcPath = nodePath.join(source, file);
