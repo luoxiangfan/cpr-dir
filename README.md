@@ -13,5 +13,5 @@ npm install cpr-dir
 import copyDir from 'cpr-dir'
 
 // like `cp -r /path/source /path/destination`
-copyDir('/path/source', '/path/destination')
+copyDir('/path/source', '/path/destination', 6)
 ```
