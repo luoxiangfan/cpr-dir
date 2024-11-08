@@ -1,0 +1,61 @@
+{
+  "name": "cpr-dir",
+  "version": "1.0.0",
+  "description": "Copy directory recursively like `cp -r` command",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "type-check": "tsc --strict --noEmit",
+    "format": "prettier --write src/",
+    "build": "unbuild",
+    "release": "npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:luoxiangfan/cpr-dir.git"
+  },
+  "keywords": [
+    "cp -r",
+    "copy",
+    "directory",
+    "folder",
+    "recursive"
+  ],
+  "author": "lxf <infiniment@163.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luoxiangfan/cpr-dir/issues"
+  },
+  "homepage": "https://github.com/luoxiangfan/cpr-dir#readme",
+  "devDependencies": {
+    "@types/async": "^3.2.24",
+    "@types/node": "^22.9.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3",
+    "unbuild": "^2.0.0"
+  },
+  "dependencies": {
+    "@lxf2513/readdir-sync-recursive": "^1.0.0",
+    "async": "^3.2.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
