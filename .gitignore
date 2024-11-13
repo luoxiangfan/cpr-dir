@@ -4,3 +4,4 @@ test
 build
 .vscode
 .history
+npm-cache
