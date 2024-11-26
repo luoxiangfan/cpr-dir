@@ -48,11 +48,11 @@
     "@types/async": "^3.2.24",
     "@types/node": "^22.9.0",
     "prettier": "^3.3.3",
-    "typescript": "^5.6.3",
+    "typescript": "^5.7.2",
     "unbuild": "^2.0.0"
   },
   "dependencies": {
-    "@lxf2513/readdir-sync-recursive": "^1.0.0",
+    "@lxf2513/readdir-sync-recursive": "^1.0.1",
     "async": "^3.2.6"
   },
   "publishConfig": {
