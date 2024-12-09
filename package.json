@@ -46,13 +46,13 @@
   "homepage": "https://github.com/luoxiangfan/cpr-dir#readme",
   "devDependencies": {
     "@types/async": "^3.2.24",
-    "@types/node": "^22.10.0",
-    "prettier": "^3.4.1",
+    "@types/node": "^22.10.1",
+    "prettier": "^3.4.2",
     "typescript": "^5.7.2",
     "unbuild": "^2.0.0"
   },
   "dependencies": {
-    "@lxf2513/readdir-sync-recursive": "^1.1.0",
+    "@lxf2513/readdir-sync-recursive": "^1.2.1",
     "async": "^3.2.6"
   },
   "publishConfig": {
