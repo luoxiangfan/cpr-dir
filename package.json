@@ -25,7 +25,7 @@
     "type-check": "tsc --strict --noEmit",
     "format": "prettier --write src/",
     "build": "unbuild",
-    "release": "npm publish"
+    "release": "unbuild && npm publish"
   },
   "repository": {
     "type": "git",
@@ -52,7 +52,7 @@
     "unbuild": "^2.0.0"
   },
   "dependencies": {
-    "@lxf2513/readdir-sync-recursive": "^1.2.1",
+    "@lxf2513/readdir-sync-recursive": "^1.2.2",
     "async": "^3.2.6"
   },
   "publishConfig": {
