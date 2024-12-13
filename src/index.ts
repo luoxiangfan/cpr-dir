@@ -8,21 +8,12 @@ import {
 } from 'node:fs';
 import readdirSyncRecursive from '@lxf2513/readdir-sync-recursive';
 
-function isFile(path: string) {
+function type(path: string) {
   try {
     const stat = statSync(path);
-    return stat.isFile();
-  } catch (error) {
-    return false;
-  }
-}
-
-function isDirectory(path: string) {
-  try {
-    const stat = statSync(path);
-    return stat.isDirectory();
-  } catch (error) {
-    return false;
+    return stat.isDirectory() ? 'dir' : stat.isFile() ? 'file' : undefined;
+  } catch {
+    return undefined;
   }
 }
 
@@ -34,24 +25,24 @@ function isDirectory(path: string) {
  */
 function copyDir(source: string, dest: string, limit: number | undefined) {
   const list = readdirSyncRecursive(source, 'relativePath');
-  const files = list.filter((l) => isFile(l));
-  const dirs = list.filter((l) => isDirectory(l));
+  const files = list.filter((l) => type(l) === 'file');
+  const dirs = list.filter((l) => type(l) === 'dir');
   for (const dir of dirs) {
-    const destPath = dir.replace(source, dest);
-    if (!existsSync(destPath)) {
-      mkdirSync(destPath, { recursive: true });
-      copyDir(dir, destPath, undefined);
+    const _dest = dir.replace(source, dest);
+    if (!existsSync(_dest)) {
+      mkdirSync(_dest, { recursive: true });
+      copyDir(dir, _dest, undefined);
     }
   }
   if (typeof limit !== 'number' || !files.length) {
     return;
   }
   async.eachLimit(files, limit, (file, next) => {
-    const destPath = file.replace(source, dest);
-    const readStream = createReadStream(file);
-    const writeStream = createWriteStream(destPath);
-    readStream.pipe(writeStream);
-    writeStream.on('finish', next);
+    const _dest = file.replace(source, dest);
+    const s = createReadStream(file);
+    const d = createWriteStream(_dest);
+    s.pipe(d);
+    d.on('finish', next);
   });
 }
 
