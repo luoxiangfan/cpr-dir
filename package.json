@@ -1,6 +1,6 @@
 {
   "name": "cpr-dir",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Copy directory recursively like `cp -r` command",
   "type": "module",
   "main": "./dist/index.cjs",
