@@ -46,7 +46,7 @@
   "homepage": "https://github.com/luoxiangfan/cpr-dir#readme",
   "devDependencies": {
     "@types/async": "^3.2.25",
-    "@types/node": "^24.3.1",
+    "@types/node": "^24.6.0",
     "prettier": "^3.6.2",
     "typescript": "^5.9.2",
     "unbuild": "^3.6.1"
